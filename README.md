@@ -7,4 +7,4 @@ I intend to use this repo as a boilerplate for all of my code needs for the futu
 However, this is a list of things I would like to build:
 
 - [ ] ffx3: a go operator for managing ffmpeg commands natively in kubernetes.
-- [ ] find a good task to help me learn python
+- [ ] git-starter: a simple python script to automate the git/github setup process
