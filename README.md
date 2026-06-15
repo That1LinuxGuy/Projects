@@ -1,5 +1,10 @@
-# Learning Python with the help of AI tools
+# Learning to Code with the help of AI tools
 
-This is my repository for tracking things I learn in python. The older versions are only present because I started trackig this project before I integrated git into my daily workflow.
+This is my repository for tracking things I learn in python, go, and posibly more as I expand m skillset. The older versions are only present because I started trackig this project before I integrated git into my daily workflow.
 
-Now it has become soft of a "git storage" repo where I may or may not store temporary notes and other stuff that is completely not relevant to python
+I intend to use this repo as a boilerplate for all of my code needs for the future. As I am rapidly learning and not very used to writing good code syntax, development will be slow.
+
+However, this is a list of things I would like to build:
+
+- [ ] ffx3: a go operator for managing ffmpeg commands natively in kubernetes.
+- [ ] find a good task to help me learn python
