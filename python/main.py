@@ -3,7 +3,7 @@ year = '1998'
 x = 3
 y = 4
 
-# print(x + y) works with math (no stinrgs)
+# print(x + y) works with math (no stings)
 print(x * y)
 
 # print(f"XXXXXXX") f evaluates for strings inside parentheses
