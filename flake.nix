@@ -41,7 +41,7 @@
 
         # 3. Python Shell: Activated with `nix develop .#python`
         python = pkgs.mkShell {
-          packages = with pkgs; [ python312 uv ruff mypy pytest ];
+          packages = with pkgs; [ python312 uv ruff mypy python312Packages.pytest ];
           shellHook = ''
             export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath cLibs}:$LD_LIBRARY_PATH"
           '';
