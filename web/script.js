@@ -9,7 +9,7 @@ function temperature(){
 function weight(){
     //To convert KGs to Pounds
     // KG * 2.2
-    var kg = document.getElementById("kilo").value;
+    var kg = document.getElementById("kilogram").value;
     var p = kg * 2.2
     document.getElementById("pounds").value = p
 }
@@ -19,3 +19,4 @@ function distance(){
     var km = document.getElementById("kilometers").value;
     var m = km * 0.062137
     document.getElementById("miles").value = m
+}

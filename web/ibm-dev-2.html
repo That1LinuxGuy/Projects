@@ -3,6 +3,7 @@
   <head>
     <!-- This is your page title that appears on the browser window or tab -->
     <title>Unit Conversions</title>
+    <script src="./script.js"></script>
   </head>
   <body>
 
@@ -40,7 +41,7 @@
               <input type="number" id="celsius"> <br/>
             
               <!-- The conversion button -->
-              <button id="temperature"> Convert </button> <br/>
+              <button id="temperature" onclick="temperature()"> Convert </button> <br/>
             
               <!-- Label for Temperature output -->
               <input type="number" id="fahrenheit"> <br/>
@@ -68,17 +69,17 @@
             <fieldset>
               <legend>Weight</legend>
               <!-- Label for Weight input -->
-              <label for="Kilograms">Kilograms</label> <br/>
+              <label for="kilograms">kilograms</label> <br/>
             
-              <input type="number" id="Kilogram"> <br/>
+              <input type="number" id="kilogram"> <br/>
             
               <!-- The conversion button -->
-              <button id="Weight"> Convert </button> <br/>
+              <button id="Weight" onclick="weight()"> Convert </button> <br/>
             
               <!-- Label for Weight output -->
-              <input type="number" id="Pounds"> <br/>
+              <input type="number" id="pounds"> <br/>
             
-              <label for="Pounds">Pounds</label>
+              <label for="pounds">pounds</label>
             </fieldset>
             <aside>
          			To convert kilograms to pounds yourself, use this formula replacing 
@@ -101,12 +102,12 @@
       			 <fieldset>
       				 <legend>Distance</legend>
       				 <!-- Label for Distance input -->
-      				 <label for="km">Kilometers</label> <br/>
+      				 <label for="kilometers">kilometers</label> <br/>
       
-      				 <input type="number" id="km"> <br/>
+      				 <input type="number" id="kilometers"> <br/>
       
       				 <!-- The conversion button -->
-      				 <button id="distance"> Convert </button> <br/>
+      				 <button id="distance" onclick="distance()"> Convert </button> <br/>
       
       				 <!-- Label for Distance output -->
       				 <input type="number" id="miles"> <br/>
