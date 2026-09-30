@@ -1,6 +1,0 @@
-[submodule "custom_hook"]
-	path = custom_hook
-	url = https://github.com/ibm-developer-skills-network/custom_hook.git
-[submodule "feedback_form"]
-	path = feedback_form
-	url = ./feedback_form/
