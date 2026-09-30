@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Submodules
+custom_hook *
+feedback_form *
+web/vftvk*
