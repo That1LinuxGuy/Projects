@@ -20,7 +20,7 @@
 
             # Python tools
             python312
-            uv
+            pip
             ruff
             mypy
             python312Packages.pytest
@@ -44,7 +44,7 @@
 
         # 3. Python Shell: Activated with `nix develop .#python`
         python = pkgs.mkShell {
-          packages = with pkgs; [ python312 uv ruff mypy python312Packages.pytest postgresql ];
+          packages = with pkgs; [ python312 pip ruff mypy python312Packages.pytest postgresql ];
           shellHook = ''
             export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath cLibs}:$LD_LIBRARY_PATH"
             echo "Python development environment loaded"

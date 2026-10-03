@@ -1,0 +1,20 @@
+[project]
+name = "lab1-template"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { email = "mcallen71398@gmal.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "django>=6.1.1",
+    "psycopg2-binary>=2.9.13",
+]
+
+[project.scripts]
+lab1-template = "lab1_template:main"
+
+[build-system]
+requires = ["uv_build>=0.12.11,<0.13.0"]
+build-backend = "uv_build"
