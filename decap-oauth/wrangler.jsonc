@@ -1,0 +1,9 @@
+{
+  "name": "melodee-decap-oauth",
+  "main": "src/index.js",
+  "compatibility_date": "2025-01-01",
+  "vars": {
+    "GITHUB_CLIENT_ID": "Ov23liXCUUEP5OG626VJ",
+    "SITE_ORIGIN": "https://melodee-designs.com"
+  }
+}
