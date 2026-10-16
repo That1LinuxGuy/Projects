@@ -38,6 +38,9 @@
         # 2. Go Shell: Activated with `nix develop .#go`
         go = pkgs.mkShell {
           packages = with pkgs; [ go gopls gotools ];
+          shellHook = ''
+            echo "Go development environment loaded"
+          '';
         };
 
         # 3. Python Shell: Activated with `nix develop .#python`
@@ -50,8 +53,11 @@
         };
 
         # 4. React / Node Shell: Activated with `nix develop .#react`
-        react = pkgs.mkShell {
+        web = pkgs.mkShell {
           packages = with pkgs; [ nodejs_22 pnpm ];
+          shellHook = ''
+            echo "Web development environment loaded"
+          '';
         };
       };
     };
