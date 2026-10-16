@@ -6,10 +6,30 @@ function cookieValue(request, name) {
 }
 
 function html(message, origin) {
-  return new Response(
-    `<script>window.opener.postMessage(${JSON.stringify(message)}, ${JSON.stringify(origin)}); window.close();</script>`,
-    { headers: { "Content-Type": "text/html; charset=utf-8" } },
-  );
+  // Decap's NetlifyAuthenticator requires a two-message handshake: it
+  // registers the success listener only after acknowledging "authorizing".
+  const script = `<script>
+    const siteOrigin = ${JSON.stringify(origin)};
+    window.addEventListener("message", function onHandshake(event) {
+      if (event.source !== window.opener || event.origin !== siteOrigin ||
+          event.data !== "authorizing:github") return;
+      window.removeEventListener("message", onHandshake);
+      window.opener.postMessage(${JSON.stringify(message)}, siteOrigin);
+      window.close();
+    });
+    if (window.opener) {
+      window.opener.postMessage("authorizing:github", siteOrigin);
+    } else {
+      document.body.textContent = "Login window was not opened by Decap CMS. Please retry from /admin/.";
+    }
+  </script>`;
+  return new Response(script, {
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "no-store",
+      "Referrer-Policy": "no-referrer",
+    },
+  });
 }
 
 export default {
@@ -43,20 +63,33 @@ export default {
         return new Response("Invalid OAuth request", { status: 400 });
       }
 
+      const tokenBody = new URLSearchParams({
+        client_id: env.GITHUB_CLIENT_ID,
+        client_secret: env.GITHUB_CLIENT_SECRET,
+        code,
+        redirect_uri: redirectUri,
+      });
       const response = await fetch(`${github}/login/oauth/access_token`, {
         method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({
-          client_id: env.GITHUB_CLIENT_ID,
-          client_secret: env.GITHUB_CLIENT_SECRET,
-          code,
-          redirect_uri: redirectUri,
-        }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
+          "User-Agent": "melodee-decap-oauth",
+        },
+        body: tokenBody,
       });
       const result = await response.json();
 
       if (!result.access_token) {
-        return new Response("GitHub token exchange failed", { status: 400 });
+        console.error("GitHub token exchange failed", {
+          status: response.status,
+          error: result.error,
+          description: result.error_description,
+        });
+        return new Response(
+          `GitHub token exchange failed: ${result.error_description || result.error || "unknown error"}`,
+          { status: 400 },
+        );
       }
 
       const message = `authorization:github:success:${JSON.stringify({
